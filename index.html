@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+        <title>Twitch chat overlay for OBS</title>
+    </head>
+    <body>
+    <h1>Twitchチャットを配信画面にいい感じに表示させるためのカスタムCSSを生成するツール</h1>
+    <section>
+        <h2>注意</h2>
+        <p>
+            TwitchのコメントをOBSのブラウザソースを使って配信画面上に表示させるためのURLとカスタムCSSを生成できます。<br />
+            突貫で作ったアルファ版なので背景色や文字色などのカスタム機能はないです。機能追加、UIのアップデート、生成コードの最適化等は今後行う予定です。モチベが続けば。
+        </p>
+    </section>
+    <main>
+        <div>
+                <label>
+                    TwitchのユーザーID:
+                    <input type="text" id="user-id" name="userId" />
+                    <button id="generate-url-btn">URLを生成</button>
+                </label>
+            <div id="url-result">
+
+            </div>
+        </div>
+        <div>
+            <label>
+                背景の濃さ:
+                <input type="number" min="0" max="100" id="opacity" />
+                %
+            </label>
+            <p>
+                数値が大きくなるほど背景が濃くなります。<br />
+                0%が透明で100%で黒くなります。
+            </p>
+            <button id="generate-css-btn">生成</button>
+        </div>
+        <div id="result">
+            <p>↓ここに生成されるコードをOBSのブラウザソースにあるカスタムCSSのところにコピペしてください。</p>
+            <div id="css-result"></div>
+        </div>
+
+        <p>不具合等のお問い合わせは<a href="https://x.com/yamaneko717">@yamaneko717</a></p>
+    </main>
+    <footer>
+        <small>&copy;2024 Àżu</small>
+        <p><a href="https://github.com/Azu0925/twitch-chat-overlay-for-obs?tab=MIT-1-ov-file#readme">MIT license</a></p>
+    </footer>
+    <script src="main.js"></script>
+    </body>
+</html>
