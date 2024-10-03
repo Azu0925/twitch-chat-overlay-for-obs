@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useChatUrl } from "./hooks/chatUrl.ts"
 import { useCustomStyle } from "./hooks/customStyle.ts"
+import { Footer } from "./components/footer.tsx"
 
 function App() {
   const { url, generateUrl } = useChatUrl()
@@ -66,14 +67,7 @@ function App() {
           <a href="https://x.com/yamaneko717">@yamaneko717</a>
         </p>
       </main>
-      <footer>
-        <small>&copy;2024 Àżu</small>
-        <p>
-          <a href="https://github.com/Azu0925/twitch-chat-overlay-for-obs?tab=MIT-1-ov-file#readme">
-            MIT license
-          </a>
-        </p>
-      </footer>
+      <Footer />
     </>
   )
 }
