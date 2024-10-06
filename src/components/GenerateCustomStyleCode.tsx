@@ -13,9 +13,6 @@ import {
   NumberInputField,
   Card,
   CardBody,
-  NumberDecrementStepper,
-  NumberIncrementStepper,
-  NumberInputStepper,
 } from "@chakra-ui/react"
 
 export const GenerateCustomStyleCode = () => {
@@ -48,10 +45,6 @@ export const GenerateCustomStyleCode = () => {
                     value={opacity}
                     onChange={(e) => setOpacity(Number(e.target.value))}
                   />
-                  <NumberInputStepper>
-                    <NumberIncrementStepper />
-                    <NumberDecrementStepper />
-                  </NumberInputStepper>
                 </NumberInput>
                 <Text fontSize={"xl"}>%</Text>
               </Flex>
