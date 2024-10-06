@@ -1,39 +1,38 @@
-import { useState } from "react"
+import { useClipboard } from "@chakra-ui/react"
 
 export const useCustomStyle = () => {
   const baseStyle = `
-    .tw-root--theme-dark .chat-room {
-      background-color: rgba(0, 0, 0, 0);
-    }
-    .tw-root--theme-light .chat-room {
-      background-color: rgba(0, 0, 0, 0);
-    }
-    .stream-chat-header {
-      visibility: hidden !important;
-      height: 0;
-    }
+.tw-root--theme-dark .chat-room {
+  background-color: rgba(0, 0, 0, 0);
+}
+.tw-root--theme-light .chat-room {
+  background-color: rgba(0, 0, 0, 0);
+}
+.stream-chat-header {
+  visibility: hidden !important;
+  height: 0;
+}
+.text-fragment {
+  color: white !important;
+}
 
-    .text-fragment {
-      color: white !important;
-    }
-
-    .chat-input {
-      visibility: hidden !important;
-    }
+.chat-input {
+  visibility: hidden !important;
+}
   `
 
-  const [style, setStyle] = useState("")
+  const { onCopy, value, setValue, hasCopied } = useClipboard("")
   const generateStyle = (opacity: number) =>
-    setStyle(`${baseStyle}${generateBackgroundColorStyle(opacity)}`)
+    setValue(`${baseStyle}${generateBackgroundColorStyle(opacity)}`)
 
-  return { style, generateStyle }
+  return { onCopy, value, generateStyle, hasCopied }
 }
 
 function generateBackgroundColorStyle(opacity: number) {
   const decimal = opacity / 100
   return `
-    body {
-      background-color: rgba(0, 0, 0, ${decimal}) !important;
-    }
+body {
+  background-color: rgba(0, 0, 0, ${decimal}) !important;
+}
   `
 }

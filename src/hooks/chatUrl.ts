@@ -1,12 +1,12 @@
-import { useState } from "react"
+import { useClipboard } from "@chakra-ui/react"
 
 export const useChatUrl = () => {
   const baseUrl = "https://www.twitch.tv/popout/"
   const baseUrlChatPath = "/chat?popout="
-  const [url, setUrl] = useState("")
 
+  const { onCopy, value, setValue, hasCopied } = useClipboard("")
   const generateUrl = (userName: string) =>
-    setUrl(`${baseUrl}${userName}${baseUrlChatPath}`)
+    setValue(`${baseUrl}${userName}${baseUrlChatPath}`)
 
-  return { url, generateUrl }
+  return { onCopy, value, generateUrl, hasCopied }
 }
