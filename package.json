@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "homepage": "https://azu0925.github.io/twitch-chat-overlay-for-obs",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
