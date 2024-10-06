@@ -7,6 +7,7 @@ export const Footer = () => {
           MIT license
         </a>
       </p>
+      <p>v0.2.1</p>
     </footer>
   )
 }
