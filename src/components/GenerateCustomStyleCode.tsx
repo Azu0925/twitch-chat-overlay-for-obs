@@ -9,58 +9,32 @@ import {
   GridItem,
   Heading,
   Text,
-  NumberInput,
-  NumberInputField,
-  Card,
-  CardBody,
 } from "@chakra-ui/react"
+import { BackgroundDensity } from "./parameters/BackgroundDensity.tsx"
+import { SelectFontColor } from "./parameters/SelectFontColor.tsx"
 
 export const GenerateCustomStyleCode = () => {
   const { onCopy, value, generateStyle, hasCopied } = useCustomStyle()
   const [opacity, setOpacity] = useState(0)
+  const [color, setColor] = useState("#ffffff")
 
   return (
     <Box marginBottom={"50px"}>
       <Heading as={"h3"} size={"md"} marginBottom={"20px"}>
         チャットの見た目の設定
       </Heading>
-      <Grid marginBottom={"20px"}>
-        <GridItem width={"400px"}>
-          <Card>
-            <CardBody>
-              <Heading as={"h4"} size={"sm"} marginBottom={"10px"}>
-                背景の濃さ
-              </Heading>
-              <Flex>
-                <NumberInput
-                  size={"sm"}
-                  marginBottom={"10px"}
-                  width={"90px"}
-                  min={0}
-                  max={100}
-                  marginRight={"10px"}
-                  defaultValue={0}
-                >
-                  <NumberInputField
-                    value={opacity}
-                    onChange={(e) => setOpacity(Number(e.target.value))}
-                  />
-                </NumberInput>
-                <Text fontSize={"xl"}>%</Text>
-              </Flex>
-              <Text>
-                数値が大きくなるほど背景が濃くなります。
-                <br />
-                0%が透明で100%で黒くなります。
-              </Text>
-            </CardBody>
-          </Card>
+      <Grid marginBottom={"20px"} templateColumns={"repeat(4, 1fr)"}>
+        <GridItem>
+          <BackgroundDensity opacity={opacity} setOpacity={setOpacity} />
+        </GridItem>
+        <GridItem>
+          <SelectFontColor color={color} setColor={setColor} />
         </GridItem>
       </Grid>
       <Box marginBottom={"20px"}>
         <Button
           onClick={() => {
-            generateStyle(opacity)
+            generateStyle(opacity, color)
           }}
           colorScheme={"purple"}
         >

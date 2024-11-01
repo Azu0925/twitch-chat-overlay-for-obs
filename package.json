@@ -1,7 +1,7 @@
 {
   "name": "twitch-chat-overlay-for-obs",
   "private": true,
-  "version": "0.2.1",
+  "version": "0.3.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -21,6 +21,7 @@
     "gh-pages": "^6.1.1",
     "prettier": "^3.3.3",
     "react": "^18.3.1",
+    "react-colorful": "^5.6.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
