@@ -1,3 +1,5 @@
+import { appVersion } from "../consts.ts"
+
 export const Footer = () => {
   return (
     <footer>
@@ -7,7 +9,7 @@ export const Footer = () => {
           MIT license
         </a>
       </p>
-      <p>v0.3.1</p>
+      <p>{appVersion}</p>
     </footer>
   )
 }
