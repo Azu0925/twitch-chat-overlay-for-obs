@@ -25,7 +25,7 @@ const baseStyle = `
   `
 
 const version = `
-/* v${appVersion} */
+/* twitch-chat-overlay-for-obs v${appVersion} */
 `
 
 export const useCustomStyle = () => {
