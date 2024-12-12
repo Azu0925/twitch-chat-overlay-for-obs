@@ -10,7 +10,8 @@
     "format": "prettier --write ./",
     "fix": "bun run format && bun run lint",
     "preview": "vite preview",
-    "deploy": "bun run build && gh-pages -d dist"
+    "deploy": "bun run build && gh-pages -d dist",
+    "check": "bun run lint && prettier --check ./src"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.9.3",
