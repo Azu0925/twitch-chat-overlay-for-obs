@@ -12,11 +12,13 @@ import {
 } from "@chakra-ui/react"
 import { BackgroundDensity } from "./parameters/BackgroundDensity.tsx"
 import { SelectFontColor } from "./parameters/SelectFontColor.tsx"
+import { SelectBackgroundColor } from "./parameters/SelectBackgroundColor.tsx"
 
 export const GenerateCustomStyleCode = () => {
   const { onCopy, value, generateStyle, hasCopied } = useCustomStyle()
   const [opacity, setOpacity] = useState(0)
   const [color, setColor] = useState("#ffffff")
+  const [backgroundColor, setBackgroundColor] = useState("#000000")
 
   return (
     <Box marginBottom={"50px"}>
@@ -26,6 +28,12 @@ export const GenerateCustomStyleCode = () => {
       <Grid marginBottom={"20px"} templateColumns={"repeat(4, 1fr)"}>
         <GridItem>
           <BackgroundDensity opacity={opacity} setOpacity={setOpacity} />
+        </GridItem>
+        <GridItem>
+          <SelectBackgroundColor
+            color={backgroundColor}
+            setColor={setBackgroundColor}
+          />
         </GridItem>
         <GridItem>
           <SelectFontColor color={color} setColor={setColor} />
