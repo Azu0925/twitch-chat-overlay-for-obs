@@ -42,7 +42,7 @@ export const GenerateCustomStyleCode = () => {
       <Box marginBottom={"20px"}>
         <Button
           onClick={() => {
-            generateStyle(opacity, color)
+            generateStyle(opacity, color, backgroundColor)
           }}
           colorScheme={"purple"}
         >

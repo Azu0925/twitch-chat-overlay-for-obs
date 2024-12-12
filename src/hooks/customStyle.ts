@@ -30,19 +30,31 @@ const version = `
 
 export const useCustomStyle = () => {
   const { onCopy, value, setValue, hasCopied } = useClipboard("")
-  const generateStyle = (opacity: number, fontColor: string) =>
+  const generateStyle = (
+    opacity: number,
+    fontColor: string,
+    backgroundColor: string,
+  ) =>
     setValue(
-      `${baseStyle}${generateBackgroundColorStyle(opacity, fontColor)}${version}`,
+      `${baseStyle}${generateBackgroundColorStyle(opacity, fontColor, backgroundColor)}${version}`,
     )
 
   return { onCopy, value, generateStyle, hasCopied }
 }
 
-function generateBackgroundColorStyle(opacity: number, fontColor: string) {
-  const decimal = opacity / 100
+function generateBackgroundColorStyle(
+  opacity: number,
+  fontColor: string,
+  backgroundColor: string,
+) {
+  const red = parseInt(backgroundColor.slice(1, 3), 16)
+  const green = parseInt(backgroundColor.slice(3, 5), 16)
+  const blue = parseInt(backgroundColor.slice(5, 7), 16)
+  const alpha = opacity / 100
+
   return `
 body {
-  background-color: rgba(0, 0, 0, ${decimal}) !important;
+  background-color: rgba(${red}, ${green}, ${blue}, ${alpha}) !important;
 }
 
 .text-fragment {
