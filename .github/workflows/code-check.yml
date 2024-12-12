@@ -1,0 +1,23 @@
+name: Code Quality Check
+
+on:
+  pull_request:
+    branches:
+      - "main"
+
+jobs:
+  lint-and-format:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Run ESLint and Prettier check
+        run: bun run check
