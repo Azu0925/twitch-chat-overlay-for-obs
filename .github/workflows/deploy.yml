@@ -3,7 +3,7 @@ name: Deploy page
 on:
   push:
     branches:
-      - "main"
+      - "v*"
 
   workflow_dispatch:
 
