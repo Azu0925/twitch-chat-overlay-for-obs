@@ -2,4 +2,4 @@
 
 OBSのブラウザソースにTwitchのチャットを表示するときに使えるCSSを生成するツールです。
 
-https://azu0925.github.io/twitch-chat-overlay-for-obs/
+https://twitch-chat-overlay-for-obs.azu0925.dev/
