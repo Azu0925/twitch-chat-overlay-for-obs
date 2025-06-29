@@ -1,5 +1,5 @@
 import { useCustomStyle } from "../hooks/customStyle.ts"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import {
   Box,
   Button,
@@ -9,16 +9,40 @@ import {
   GridItem,
   Heading,
   Text,
+  Alert,
+  AlertIcon,
+  AlertDescription,
+  Spinner,
 } from "@chakra-ui/react"
 import { BackgroundDensity } from "./parameters/BackgroundDensity.tsx"
 import { SelectFontColor } from "./parameters/SelectFontColor.tsx"
 import { SelectBackgroundColor } from "./parameters/SelectBackgroundColor.tsx"
 
 export const GenerateCustomStyleCode = () => {
-  const { onCopy, value, generateStyle, hasCopied } = useCustomStyle()
+  const {
+    onCopy,
+    value,
+    generateStyle,
+    hasCopied,
+    error,
+    isLoading,
+    clearError,
+  } = useCustomStyle()
   const [opacity, setOpacity] = useState(0)
   const [color, setColor] = useState("#ffffff")
   const [backgroundColor, setBackgroundColor] = useState("#000000")
+
+  // エラーをクリアする
+  useEffect(() => {
+    if (error) {
+      const timer = setTimeout(clearError, 5000)
+      return () => clearTimeout(timer)
+    }
+  }, [error, clearError])
+
+  const handleGenerateStyle = () => {
+    generateStyle(opacity, color, backgroundColor)
+  }
 
   return (
     <Box marginBottom={"50px"}>
@@ -39,14 +63,22 @@ export const GenerateCustomStyleCode = () => {
           <SelectFontColor color={color} setColor={setColor} />
         </GridItem>
       </Grid>
+
+      {error && (
+        <Alert status="error" marginBottom={"20px"}>
+          <AlertIcon />
+          <AlertDescription>{error.message}</AlertDescription>
+        </Alert>
+      )}
+
       <Box marginBottom={"20px"}>
         <Button
-          onClick={() => {
-            generateStyle(opacity, color, backgroundColor)
-          }}
+          onClick={handleGenerateStyle}
           colorScheme={"purple"}
+          isLoading={isLoading}
+          loadingText="生成中..."
         >
-          生成
+          {isLoading ? <Spinner size="sm" /> : "生成"}
         </Button>
       </Box>
       <Text marginBottom={"20px"}>
