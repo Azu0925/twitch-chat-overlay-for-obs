@@ -6,19 +6,12 @@ export default defineConfig({
   base: "/",
   build: {
     sourcemap: false,
-    minify: "terser",
+    minify: 'terser',
     terserOptions: {
       compress: {
         drop_console: true,
         drop_debugger: true,
       },
-    },
-  },
-  server: {
-    headers: {
-      "X-Content-Type-Options": "nosniff",
-      "X-Frame-Options": "DENY",
-      "X-XSS-Protection": "1; mode=block",
     },
   },
 })
