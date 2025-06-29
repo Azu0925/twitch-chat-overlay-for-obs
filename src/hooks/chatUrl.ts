@@ -1,6 +1,6 @@
 import { useClipboard } from "@chakra-ui/react"
 import { useState } from "react"
-import { validateTwitchUsername, escapeHtml } from "../utils/validation"
+import { validateTwitchUsername } from "../utils/validation"
 import { ERROR_MESSAGES, type AppError } from "../types/errors"
 
 export const useChatUrl = () => {
@@ -16,17 +16,15 @@ export const useChatUrl = () => {
     setError(null)
 
     try {
-      if (!userName.trim()) {
+      const trimmedUserName = userName.trim()
+      if (!trimmedUserName) {
         throw new Error(ERROR_MESSAGES.EMPTY_USERNAME)
       }
-
-      if (!validateTwitchUsername(userName.trim())) {
+      if (!validateTwitchUsername(trimmedUserName)) {
         throw new Error(ERROR_MESSAGES.INVALID_USERNAME)
       }
-
-      const escapedUserName = escapeHtml(userName.trim().toLowerCase())
-      const generatedUrl = `${baseUrl}${escapedUserName}${baseUrlChatPath}`
-
+      const encodedUserName = encodeURIComponent(trimmedUserName.toLowerCase())
+      const generatedUrl = `${baseUrl}${encodedUserName}${baseUrlChatPath}`
       setValue(generatedUrl)
     } catch (err) {
       const errorMessage =
