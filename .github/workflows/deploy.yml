@@ -21,6 +21,9 @@ jobs:
       - name: Install dependencies
         run: bun install
 
+      - name: Run security audit
+        run: bun audit
+
       - name: Build the React app
         run: bun run build
 
